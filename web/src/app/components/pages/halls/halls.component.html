@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="container shadow-lg">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+            <h1>{{address.addressName}}</h1>
+            <div class="addButton">
+                <button class="btn btn-success" (click)="addHallToAddress()"><i class="bi bi-plus-circle"></i> Add Hall</button>
+            </div>
+        </div>
+    </div>
+    <div class="row tableHeader">
+        <div class="col-1 d-flex justify-content-center">
+            <strong>#</strong>
+        </div>
+        <div class="col-3 d-flex justify-content-start">
+            <strong>Hall name</strong>
+        </div>
+        <div class="col-8 d-flex justify-content-start">
+            <strong>Seat capacity</strong>
+        </div>
+    </div>
+    
+    <div *ngFor="let hall of halls; let i = index; let even = even; let odd = odd">
+        <div class="row rowContent d-flex row-striped" [ngClass]="{ odd: odd, even: even }" >
+            <div class="col-1 d-flex justify-content-center">
+                <strong>{{i+1}}.</strong>
+            </div>
+            <div class="col-3 d-flex justify-content-start">
+                <span>{{hall.name}}</span>
+            </div>
+            <div class="col-7 d-flex justify-content-start">
+                <span>{{hall.seatCapacity}}</span>
+            </div>
+            <div class="col-1 settings d-flex justify-content-between">
+                <i (click)="onClickUpdateHall(hall)" class="bi bi-pencil-square text-warning"></i>
+                <i (click)="viewHallInfo(hall)" class="bi bi-eye text-secondary"></i>
+                <i (click)="onClickDelete(hall)" class="bi bi-trash3 text-danger me-2"></i>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between pt-3">
+        <div>
+            <pagination-controls 
+                (pageChange)="page = $event"
+                (click)="getAllHallsByAddressId()"
+            ></pagination-controls>
+        </div>
+        <div>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="size"
+                (ngModelChange)="getAllHallsByAddressId()">
+                <option [ngValue]="10">10 per page</option>
+                <option [ngValue]="15">15 per page</option>
+                <option [ngValue]="20">20 per page</option>
+            </select>
+        </div>
+    </div>
+</div>

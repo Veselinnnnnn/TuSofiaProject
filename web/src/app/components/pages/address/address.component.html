@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container shadow-lg">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+            <h1>Addresses</h1>
+            <div class="addButton">
+                <button class="btn btn-success" (click)="onClickAddAddress()"><i class="bi bi-plus-circle"></i> Add Address</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row tableHeader">
+        <div class="col-1 d-flex justify-content-center">
+            <strong>#</strong>
+        </div>
+        <div class="col-11 d-flex justify-content-start">
+            <strong>Address name</strong>
+        </div>
+    </div>
+    <div *ngFor="let address of addresses| paginate: { itemsPerPage: size, currentPage: page,totalItems: totalElements } ; let i = index; let even = even; let odd = odd">
+        <div class="row contentRow d-flex row-striped" [ngClass]="{ odd: odd, even: even }" >
+            <div class="col-1 d-flex justify-content-center" (click)="onClickNavigateToHalls(address)">
+                <strong>{{i+1}}.</strong>
+            </div>
+            <div class="col-10 d-flex justify-content-start" (click)="onClickNavigateToHalls(address)">
+                <span>{{address.addressName}}</span>
+            </div>
+            <div class="col-1 settings d-flex justify-content-end">
+                <i (click)="onClickUpdateAddress(address)" class="bi bi-pencil-square text-warning"></i>
+                <i (click)="onClickViewAddressInfo(address)" class="bi bi-eye text-secondary"></i>
+                <i (click)="onClickDelete(address)" class="bi bi-trash3 text-danger"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-between pt-3">
+        <div>
+            <pagination-controls 
+                (pageChange)="page = $event"
+                (click)="getAllAddresses()"
+            ></pagination-controls>
+        </div>
+        <div>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="size"
+                (ngModelChange)="getAllAddresses()">
+                <option [ngValue]="10">10 per page</option>
+                <option [ngValue]="15">15 per page</option>
+                <option [ngValue]="20">20 per page</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<app-toasts></app-toasts>

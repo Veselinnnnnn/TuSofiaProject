@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div class="container shadow-lg">
+        <div class="row">
+            <div class="col-12 header">
+                <h2>Create Session</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6 leftColumn ">
+                <div class="row  d-flex justify-content-center">
+                    <div class="col-10">
+                        <form [formGroup]="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" formControlName="sessionName"
+                                        placeholder="Session name">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" formControlName="sessionDuration"
+                                        placeholder="Session duration">
+                                </div>
+                                <div class="input-group">
+                                    <textarea class="form-control" formControlName="description"
+                                        placeholder="Description" rows="3"></textarea>
+                                </div>
+                                <div class="input-group d-flex">
+                                    <input type="text" class="form-control"
+                                        [ngClass]="{'error': addressExists === -1, 'success': addressExists === 1, '' : addressExists === 0}"
+                                        [(ngModel)]="addressName" formControlName="address" placeholder="Address">
+                                    <button *ngIf="addressExists === 1 || addressExists===0" class="btn btn-success"
+                                        [ngClass]="addressExists===1?'success':''"
+                                        (click)="checkAddressAndGetAllHallsIfExists()"><i
+                                            class="bi bi-check"></i></button>
+                                    <button *ngIf="addressExists === -1" class="btn btn-danger error"
+                                        (click)="clearAddressInput()"><i class="bi bi-x"></i></button>
+                                </div>
+                                <div *ngIf="addressExists === -1" class="pt-2">
+                                    <span class="text-danger">There is no such address! </span><a
+                                        (click)="openCreateAddressModal()" class="text-decoration-none">Create one!</a>
+                                </div>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 rightColumn">
+                <div *ngIf="addressExists === 1" >
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Pick a hall</h3>
+                        </div>
+                    </div>
+                    <hr class="hallHr">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-start flex-wrap">
+                            <div *ngFor="let hall of halls" class="d-flex  boxes  flex-wrap">
+                                <strong class="box"
+                                    (click)="onClickPickHall(hall.id)">{{hall.name}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="availableHours">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Pick a hour</h3>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center flex-wrap">
+                            <div *ngFor="let hour of hours" class="d-flex boxes flex-wrap">
+                                <strong class="box" (click)="onClickPickHour(hour)">{{hour}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showSpeaker">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Pick a speaker</h3>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-start flex-wrap">
+                            <div *ngFor="let speaker of speakers" class="d-flex boxes flex-wrap">
+                                <strong class="box" (click)="onClickPickSpeaker(speaker)">{{speaker.speakerName}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row buttonRow">
+            <div class="col-12 d-flex justify-content-between">
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.NEW || mode === MODES.EDIT" class="btn btn-danger"
+                        (click)="onClickGoBack()">Cancel</button>
+                </div>
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.NEW" class="btn btn-primary"  [disabled]="buttonDisabled" (click)="onClickCreateSession()">Finish</button>
+                    <button *ngIf="mode === MODES.EDIT" class="btn btn-primary" (click)="onClickEditSession()">Edit
+                        session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

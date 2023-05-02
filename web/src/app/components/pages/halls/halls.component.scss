@@ -1,0 +1,32 @@
+.container{
+    margin: 50px auto;
+    padding: 20px 20px;
+}
+
+.settings{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap:15px;
+    font-size: 20px;
+}
+
+.row-striped.even {
+    background-color: #ffffff;
+  }
+  
+  .row-striped.odd {
+    background-color: #efefef;
+}
+
+.row{
+    padding: 20px 0;
+    border-bottom: 1px solid gray;
+}
+.rowContent{
+    
+    cursor: pointer;
+}
+.tableHeader{   
+    background:linear-gradient(to right, #FFFFFF, #C9A0FF, #C9A0FF,#7CB9E8,#7CB9E8,#FFFFFF);
+}

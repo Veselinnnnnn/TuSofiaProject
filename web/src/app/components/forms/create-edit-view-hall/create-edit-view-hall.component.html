@@ -1,0 +1,40 @@
+<div class="closeModal pt-2 d-flex justify-content-end">
+    <button class="btn closeModalButton border-0" (click)="onClickCloseModal()"><i class="bi bi-x-lg"></i></button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h2 *ngIf="mode === MODES.NEW">Add Hall</h2>
+            <h2 *ngIf="mode === MODES.READ">View Hall</h2>
+            <h2 *ngIf="mode === MODES.EDIT">Edit Hall</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="hallForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" [readonly]=readOnly class="form-control" formControlName="name"
+                            placeholder="Hall name">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" [readonly]=readOnly class="form-control" formControlName="seatCapacity"
+                            placeholder="Seat capacity">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex justify-content-between">
+            <div class="exitButtons">
+                <button *ngIf="mode === MODES.NEW || mode === MODES.EDIT" class="btn btn-danger" (click)="onClickCloseModal()">Cancel</button>
+            </div>
+            <div class="exitButtons">
+                <button *ngIf="mode === MODES.READ" class="btn btn-primary" (click)="onClickCloseModal()">Back</button>
+                <button *ngIf="mode === MODES.NEW" class="btn btn-primary" (click)="onClickCreateHall()">Add hall</button>
+                <button *ngIf="mode === MODES.EDIT" class="btn btn-primary" (click)="onClickEditHall()">Edit hall</button>
+            </div>
+        </div>
+    </div>
+</div>

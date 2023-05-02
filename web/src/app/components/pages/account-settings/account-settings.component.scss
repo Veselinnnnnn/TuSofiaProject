@@ -1,0 +1,65 @@
+
+.container-fluid{
+    background:linear-gradient(0.375turn, #C9A0FF,#7CB9E8);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+h4{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 2px;
+    font-size:24px;
+}
+p{
+    display: flex;
+    justify-content: center;
+    font-size:16px;
+}
+.formStyle{
+    margin:5vh auto;
+    width: 95%;
+}
+label{
+    font-size:16px;
+    margin: 8px 4px;
+}
+.input-group{
+    padding: 8px 0;
+    gap: 15px;
+}
+
+.emailInput{
+    background-color: white;
+    color:gray;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    font-size: 18px;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.asd2{
+    padding: 6.4px 0 6.4px 12px;
+}
+.editEmail{
+    height: 41.6px;
+    border-radius: 0 5px 5px 0;
+}
+.formRow{
+    width: 90%; 
+    margin: 0 auto;
+}
+
+input[type=text] {
+    font-size: 18px;
+}
+
+.button-position{
+    display: flex;
+    justify-content: end;
+    width: 90%;;
+    margin: 16px auto;
+}

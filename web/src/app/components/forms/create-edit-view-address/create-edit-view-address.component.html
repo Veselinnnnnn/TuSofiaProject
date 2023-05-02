@@ -1,0 +1,33 @@
+<div class="closeModal d-flex justify-content-end">
+    <button class="btn closeModalButton border-0" (click)="onClickCloseModal()"><i class="bi bi-x-lg"></i></button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h2 *ngIf="mode === MODES.NEW">Add Address</h2>
+            <h2 *ngIf="mode === MODES.READ">View Address</h2>
+            <h2 *ngIf="mode === MODES.EDIT">Edit Address</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="addressForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" [readonly]=readOnly formControlName="addressName" placeholder="Address name">
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-between">
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.NEW || mode === MODES.EDIT" class="btn btn-danger" (click)="onClickCloseModal()">Cancel</button>
+                </div>
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.READ" class="btn btn-primary" (click)="onClickCloseModal()">Back</button>
+                    <button *ngIf="mode === MODES.NEW" class="btn btn-primary" (click)="onClickCreateAddress()">Add address</button>
+                    <button *ngIf="mode === MODES.EDIT" class="btn btn-primary" (click)="onClickEditAddress()">Edit address</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

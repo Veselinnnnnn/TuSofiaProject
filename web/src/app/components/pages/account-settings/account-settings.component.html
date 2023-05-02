@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="container shadow-lg">
+        <div class="row header shadow-lg">
+            <div class="col-12">
+                <h4>Account</h4>
+                <p>Edit your account settings and change your password here.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 formStyle">
+                <form [formGroup]="form">
+                    <div class="formRow">
+                        <div class="row text-danger text-center">
+                                <h6>Warning: Will be added in the future!</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="fw-bold">First name</label>
+                            </div>
+                            <div class="col-4">
+                                <label class="fw-bold">Last name</label>
+                            </div>
+                            <div class="col-4">
+                                <label class="fw-bold">Username</label>
+                            </div>
+                        </div>
+                        <div class="input-group ">
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="First name">
+                            <input type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+                            <input type="text" class="form-control" formControlName="username" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <label class="fw-bold">Email:</label>
+                        <div class="emailInput">
+                            <span class="asd2">Your email address is:<b
+                                    class="text-dark mx-2">{{this.userModel.email}}</b></span>
+                            <button class="btn btn-secondary border-left editEmail" type="button"><i
+                                    class="bi bi-pencil-fill"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="formRow">
+                        <label class="fw-bold">Password:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="currentPassword"
+                                placeholder="Enter current password">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="newPassword"
+                                placeholder="Enter new password">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="reTypeNewPassword"
+                                placeholder="Re-type new password">
+                        </div>
+                    </div>
+                </form>
+                <div class=" button-position">
+                    <button class="btn btn-primary" (click)="onClickSaveData()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-toasts></app-toasts>

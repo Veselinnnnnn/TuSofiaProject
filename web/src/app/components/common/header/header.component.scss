@@ -1,0 +1,53 @@
+img{
+    width: 150px;
+}
+
+.container-fluid{
+    border-bottom: 0.5px solid gray;
+    background:linear-gradient(0.375turn, #C9A0FF,#7CB9E8);
+}
+
+.items{
+    align-items: center;
+}
+
+.nav-item{
+    margin-right: 32px;
+}
+
+.navbarContainer{
+    width:100%;
+}
+
+.rightItems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+.dropdown-menu {
+    width: 300px !important;
+}
+
+.userAccount{
+    margin-top:16px;
+}
+
+i{
+    font-size: 32px;
+}
+
+.accountButton{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    align-items: center;
+}
+
+.nav-item {
+    cursor: pointer;
+}

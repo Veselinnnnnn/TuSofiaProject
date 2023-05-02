@@ -1,0 +1,38 @@
+<div class="closeModal d-flex justify-content-end">
+    <button class="btn closeModalButton border-0" (click)="onClickCloseModal()"><i class="bi bi-x-lg"></i></button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h2 *ngIf="mode === MODES.NEW">Add Speaker</h2>
+            <h2 *ngIf="mode === MODES.READ">View Speaker</h2>
+            <h2 *ngIf="mode === MODES.EDIT">Edit Speaker</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="speakerForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" [readOnly]="readOnly" formControlName="speakerName"
+                            placeholder="Speaker name">
+                    </div>
+                    <div class="input-group">
+                        <textarea class="form-control" [readOnly]="readOnly"  formControlName="description" placeholder="Description"
+                            rows="3"></textarea>
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-between">
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.NEW || mode === MODES.EDIT" class="btn btn-danger" (click)="onClickCloseModal()">Cancel</button>
+                </div>
+                <div class="exitButtons">
+                    <button *ngIf="mode === MODES.READ" class="btn btn-primary" (click)="onClickCloseModal()">Back</button>
+                    <button *ngIf="mode === MODES.NEW" class="btn btn-primary" (click)="onClickCreateSpeaker()">Add speaker</button>
+                    <button *ngIf="mode === MODES.EDIT" class="btn btn-primary" (click)="onClickEditSpeaker()">Edit speaker</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

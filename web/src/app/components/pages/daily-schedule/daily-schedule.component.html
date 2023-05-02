@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div class="container shadow-lg">
+    <div class="row">
+        <div class="col-6 d-flex gap-3" style="align-items:baseline">
+            <h1>{{date.getDate()}}</h1>
+            <h2>{{monthNames[date.getMonth()]}}</h2>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <h1>{{date.getFullYear()}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end gap-3" style="align-items:end">
+            <button class="btn btn-success" (click)="createSession()"><i class="bi bi-plus-circle"></i> Create Session</button>
+        </div>
+    </div>
+    <div class="row tableHeader">
+        <div class="col-1 d-flex justify-content-center">
+            <strong>#</strong>
+        </div>
+        <div class="col-11 d-flex justify-content-start">
+            <strong>Session name</strong>
+        </div>
+    </div>
+    <div *ngFor="let session of sessionsResponse ; let i = index; let even = even; let odd = odd">
+        <div class="row contentRow d-flex row-striped" [ngClass]="{ odd: odd, even: even }" >
+            <div class="col-1 d-flex justify-content-center" (click)="onClickMarksAsActive(session,i)">
+                <strong>{{i+1}}.</strong>
+            </div>
+            <div class="col-10 d-flex justify-content-start" (click)="onClickMarksAsActive(session,i)">
+                <span>{{session.sessionName}}</span>
+            </div>
+            <div class="col-1 settings d-flex justify-content-end">
+                <i (click)="onClickViewSession(session)" class="bi bi-eye text-secondary"></i>
+                <i (click)="onClickDelete(session)" class="bi bi-trash3 text-danger"></i>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between pt-3">
+        <div>
+            <pagination-controls 
+                (pageChange)="page = $event"
+                (click)="getAllSession()"
+            ></pagination-controls>
+        </div>
+        <div>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="size"
+                (ngModelChange)="getAllSession()">
+                <option [ngValue]="10">10 per page</option>
+                <option [ngValue]="15">15 per page</option>
+                <option [ngValue]="20">20 per page</option>
+            </select>
+        </div>
+    </div>
+</div>

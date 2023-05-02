@@ -1,0 +1,42 @@
+<div class="container-fluid shadow-lg">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbarContainer d-flex justify-content-between">
+                <div class="items d-flex flex-row">
+                    <a (click)="onClickNavigateToHome()" class="nav-item nav-link"><img src="../assets/images/logo.png" alt="logo"></a>
+                    <a class="nav-item nav-link" (click)="onClickNavigateToAddresses()">Addresses</a>
+                    <a class="nav-item nav-link" (click)="onClickNavigateToSpeakers()">Speakers</a>
+                </div>
+                <div class="rightItems">
+                    <div *ngIf="!signIn">
+                        <button class="btn border-0 d-flex" routerLink="signIn">
+                            <h5>Sign in <i class="bi bi-door-open"></i></h5>
+                        </button>
+                    </div>
+                   <div *ngIf="signIn" ngbDropdown class="d-flex justify-content-end" display="dynamic">
+                            <button type="button" class="btn btn-transparent accountButton  border-0" ngbDropdownToggle id="dropdownBasic1">
+                                <strong>{{username}}</strong> 
+                                <i class="bi bi-person-circle account-image"></i></button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-3 d-flex justify-content-center">
+                                        <i class="bi bi-person-circle" style="font-size: 3rem"></i>
+                                        </div>
+                                        <div class="col-9 userAccount">
+                                            <span class="fw-bold">{{user.firstName}} {{user.lastName}}</span>
+                                            <br>
+                                            <p>{{user.email}}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <button (click)="navigateToAccountSettings()" ngbDropdownItem><span>Account settings</span></button>
+                                <button ngbDropdownItem (click)="onSignOut()"><span>Sign out</span></button>
+                            </div>
+                        </div>
+                </div>
+            </div>         
+        </nav>
+    </div>
+</div>

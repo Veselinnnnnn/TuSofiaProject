@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row header ">
+        <div class="col-12">
+            <h4>Photo</h4>
+            <p>Add a nice photo of yourself for your profile</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+                <label for="image"><b>Image preview</b></label>
+
+                <div [hidden]="!temp" class="imageBorder">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+
+                <div [hidden]="temp">
+                    <image-cropper [imageChangedEvent]="url" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                    [resizeToWidth]="256" format="png" (imageCropped)="cropImage($event)"></image-cropper>
+                </div>
+
+                <label for="image"><b>Add / Change Image</b></label>
+                <div class="justify-content-between d-flex">
+                    <input class="form-control insertImage" type="file" (change)="onSelectFile($event)">
+                    <button class="btn btn-primary" (click)="onClickSaveData()">Save</button>
+                </div>
+            
+        </div>
+    </div>
+</div>

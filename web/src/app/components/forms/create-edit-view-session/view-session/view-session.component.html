@@ -1,0 +1,84 @@
+
+<div class="closeModal d-flex justify-content-end">
+    <button class="btn closeModalButton border-0" (click)="onClickCloseModal()"><i class="bi bi-x-lg"></i></button>
+</div>
+<div class="container">
+    <div class="row header">
+        <div class="col-12 d-flex justify-content-center">
+            <h2>Session Information</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-center">
+        <div class="col-11">
+            <div class="row">
+                <div class="col-6">
+                    <strong>Session name: </strong>
+                    <br>
+                    <span>{{sessionResponse.sessionName}}</span>
+                </div>
+                <div class="col-6">
+                    <strong>Created by: </strong>
+                    <br>
+                    <span>{{owner.firstName}} {{owner.lastName}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <strong>Address: </strong>
+                    <br>
+                    <span>{{address.addressName}}</span>
+                </div>
+                <div class="col-6">
+                    <strong>Hall: </strong>
+                    <br>
+                    <span>{{hall.name}}</span>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-12">
+                    <strong>Description: </strong>
+                    <span>{{sessionResponse.description}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <strong>Session start: </strong>
+                    <br>
+                    <span>{{startTime}}</span>
+                </div>
+                <div class="col-6">
+                    <strong>Session end: </strong>
+                    <br>
+                    <span>{{endTime}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12"><strong>Speaker: </strong></div>
+            </div>
+            <div class="row">
+                    <div>
+                        {{speakerResponse.speakerName}}
+                    </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row buttonRow">
+        <div class="col-12 d-flex justify-content-between">
+            <div class="exitButtons">
+                <button *ngIf="mode === MODES.NEW || mode === MODES.EDIT" class="btn btn-danger"
+                    (click)="onClickCloseModal()">Cancel</button>
+            </div>
+            <div class="exitButtons">
+                <button *ngIf="mode === MODES.READ" class="btn btn-primary"
+                    (click)="onClickCloseModal()">Back</button>
+                <button *ngIf="mode === MODES.NEW" class="btn btn-primary" (click)="onClickCreateSession()">Create
+                    session</button>
+                <button *ngIf="mode === MODES.EDIT" class="btn btn-primary" (click)="onClickEditSession()">Edit
+                    session</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="container shadow-lg">
+        <div class="spaceTopAndBot">
+            <div class="row d-flex justify-content-center">
+                <div class="col-10">
+                    <img src="../../../../assets/images/logo.png" alt="Conference Scheduler logo">
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control" formControlName="password"
+                                    placeholder="password">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row rowText pt-1 justify-content-around">
+                <div class="col-10">
+                    <p>No account? <a routerLink="/signUp" class="text-decoration-none">Create one!</a></p>
+                </div>
+            </div>
+            <div class="row pt-1 justify-content-around">
+                <div class="col-10 d-flex justify-content-end">
+                    <button autofocus class="btn btn-primary" (click)="signIn()">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

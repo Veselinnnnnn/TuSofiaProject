@@ -1,0 +1,28 @@
+.container{
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+
+}
+
+.container-fluid{
+    background:linear-gradient(0.375turn, #C9A0FF,#7CB9E8);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+img{
+    width: 200px;
+    
+}
+
+.input-group{
+    margin-top:16px;
+}
+
+.spaceTopAndBot{
+    padding-top:32px; 
+    padding-bottom:32px;
+}

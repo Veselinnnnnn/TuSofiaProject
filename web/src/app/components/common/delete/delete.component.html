@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="pt-2 d-flex justify-content-end">
+        <button class="btn closeModalButton border-0" (click)="onClickCloseModal()"
+            ><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="text-center">
+        <h1 class="text-danger redXCircle"><i class="bi bi-x-circle"></i></h1>
+        <h3>Are you sure?</h3>
+        <hr>
+        <p>Do you really want to delete this record! This <br> process cannot be undone.</p>
+        <div class="d-flex justify-content-around pb-4">
+            <button class="btn btn-secondary " (click)="onClickCloseModal()">Cancel</button>
+            <button class="btn btn-danger" (click)="onClickDelete()">Delete</button>
+        </div>
+    </div>
+</div>
